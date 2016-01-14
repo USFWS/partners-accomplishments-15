@@ -1,0 +1,48 @@
+{
+  "name": "partners-15",
+  "version": "1.0.0",
+  "description": "Accomplishments for the Southeast Region Partners program in 2015",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "prebuild:sass": "rimraf -rf dist/styles/*",
+    "build:sass": "node-sass --output-style compressed app/sass/styles.scss | postcss -u autoprefixer -o dist/css/styles.css",
+    "prewatch:sass": "npm run build:sass",
+    "watch:sass": "node-sass -w app/sass/styles.scss dist/css/styles.css",
+    "minify:html": "htmlmin -o dist/index.html app/index.html",
+    "prebuild:js": "rimraf -rf dist/js/*",
+    "build:js": "browserify app/js/index.js | uglifyjs -mc > dist/js/bundle.js",
+    "watch:js": "watchify app/js/index.js -o dist/js/bundle.js -dv",
+    "preshrink:img": "rimraf dist/images/*",
+    "shrink:img": "imagemin app/images/**/* dist/images/ -p",
+    "serve": "browser-sync start --server dist --files 'dist/**/*'",
+    "watch": "npm-watch",
+    "clean:dist": "rimraf -rf dist",
+    "build:dist": "node app/js/build.js",
+    "prestart": "npm run clean:dist && npm run build:dist",
+    "start": "npm run shrink:img & npm run minify:html & npm run watch:js & npm run watch:sass & npm run serve",
+    "prebuild": "npm run clean:dist && npm run build:dist",
+    "build": "npm run shrink:img && npm run minify:html && npm run build:js && npm run build:sass && npm run minify:json",
+    "inspect:bundle": "browserify --full-paths app/js/index.js | uglifyjs -mc | Discify --open",
+    "publish:demo": "npm run build && gh-pages -d dist"
+  },
+  "author": "@r0yhewitt",
+  "license": "SAX-PD",
+  "dependencies": {
+    "leaflet": "^1.0.0-beta.2"
+  },
+  "devDependencies": {
+    "autoprefixer": "^6.2.3",
+    "browser-sync": "^2.11.0",
+    "disc": "^1.3.2",
+    "gh-pages": "^0.8.0",
+    "html-minifier-cli": "^0.1.0",
+    "imagemin-cli": "^2.1.0",
+    "mkdirp": "^0.5.1",
+    "node-sass": "^3.4.2",
+    "postcss-cli": "^2.3.3",
+    "rimraf": "^2.5.0",
+    "uglifyjs": "^2.4.10",
+    "watchify": "^3.7.0"
+  }
+}
