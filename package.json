@@ -5,8 +5,8 @@
   "description": "Accomplishments for the Southeast Region Partners program in 2015",
   "main": "index.js",
   "watch": {
-    "minify:html": "src/*.html",
-    "shrink:img": "src/images/**/*"
+    "minify:html": "app/index.html",
+    "shrink:img": "app/images/**/*"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -25,7 +25,7 @@
     "clean:dist": "rimraf -rf dist",
     "build:dist": "node app/js/build.js",
     "prestart": "npm run clean:dist && npm run build:dist",
-    "start": "npm run watch & npm run shrink:img & npm run minify:html & npm run watch:js & npm run watch:sass & npm run serve",
+    "start": "npm run shrink:img & npm run minify:html & npm run watch:js & npm run watch:sass & npm run watch & npm run serve",
     "prebuild": "npm run clean:dist && npm run build:dist",
     "build": "npm run shrink:img && npm run minify:html && npm run build:js && npm run build:sass && npm run minify:json",
     "inspect:bundle": "browserify --full-paths app/js/index.js | uglifyjs -mc | Discify --open",
@@ -45,6 +45,7 @@
     "imagemin-cli": "^2.1.0",
     "mkdirp": "^0.5.1",
     "node-sass": "^3.4.2",
+    "npm-watch": "^0.1.1",
     "postcss-cli": "^2.3.3",
     "rimraf": "^2.5.0",
     "uglifyjs": "^2.4.10",
