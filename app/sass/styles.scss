@@ -1,1 +1,20 @@
+@import url(https://fonts.googleapis.com/css?family=Roboto+Slab);
+
+html {
+  box-sizing: border-box;
+  font-family: 'Roboto Slab', 'Helvetica Neue', Helvetica, Arial;
+  font-size: 1.2em;
+  max-height: 100vh;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+@import 'variables';
+
 @import 'normalize';
+
+@import 'header';
+@import 'page';
+@import 'footer';

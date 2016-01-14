@@ -1,0 +1,27 @@
+.last-updated {
+  text-align: center;
+}
+
+footer {
+  ul {
+    list-style: none;
+    text-align: center;
+
+    li {
+      display: inline-block;
+      margin-right: 7px;
+
+      &:last-child {
+        margin-right: 0;
+
+        &::after {
+          content: '';
+        }
+      }
+
+      &::after {
+        content: ' |';
+      }
+    }
+  }
+}

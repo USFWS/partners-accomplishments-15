@@ -1,0 +1,52 @@
+header {
+  position: relative;
+}
+
+.logo {
+  left: 7px;
+  position: absolute;
+  top: 7px;
+}
+
+.banner {
+  height: 36px;
+
+  span {
+    line-height: 36px;
+    margin-left: 90px;
+  }
+}
+
+.hero-image {
+  max-height: 500px;
+  overflow: hidden;
+}
+
+.banner-black {
+  background: black;
+  color: white;
+}
+
+.banner-blue {
+  background: #369;
+
+  span {
+    color: white;
+    float: right;
+    margin-right: 10px;
+  }
+}
+
+.show-small {
+  display: none;
+
+  @media (min-width: $break-xs) {
+    display: block;
+  }
+}
+
+.show-xs {
+  @media (min-width: $break-xs) {
+    display: none;
+  }
+}
