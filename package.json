@@ -6,10 +6,12 @@
   "main": "index.js",
   "watch": {
     "minify:html": "app/index.html",
-    "shrink:img": "app/images/**/*"
+    "shrink:img": "app/images/**/*",
+    "shrink:svg": "app/svg/*"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+    "minify:json": "json-minify app/data/accomplishments.geojson > dist/data/accomplishments.js",
     "prebuild:sass": "rimraf -rf dist/styles/*",
     "build:sass": "node-sass --output-style compressed app/sass/styles.scss | postcss -u autoprefixer -o dist/css/styles.css",
     "prewatch:sass": "npm run build:sass",
@@ -19,22 +21,27 @@
     "build:js": "browserify app/js/index.js | uglifyjs -mc > dist/js/bundle.js",
     "watch:js": "watchify app/js/index.js -o dist/js/bundle.js -dv",
     "preshrink:img": "rimraf dist/images/*",
-    "shrink:img": "imagemin app/images/**/* dist/images/ -p",
+    "shrink:img": "imagemin app/img/**/* dist/img/ -p",
+    "shrink:svg": "imagemin -P svgo app/svg/* dist/img",
+    "shrink:graphics": "npm run shrink:img & npm run shrink:svg",
     "serve": "browser-sync start --server dist --files 'dist/**/*'",
     "watch": "npm-watch",
     "clean:dist": "rimraf -rf dist",
     "build:dist": "node app/js/build.js",
     "prestart": "npm run clean:dist && npm run build:dist",
-    "start": "npm run shrink:img & npm run minify:html & npm run watch:js & npm run watch:sass & npm run watch & npm run serve",
+    "start": "npm run shrink:graphics & npm run minify:html & npm run watch:js & npm run watch:sass & npm run watch & npm run minify:json & npm run serve",
     "prebuild": "npm run clean:dist && npm run build:dist",
-    "build": "npm run shrink:img && npm run minify:html && npm run build:js && npm run build:sass && npm run minify:json",
+    "build": "npm run shrink:graphics && npm run minify:html && npm run build:js && npm run build:sass && npm run minify:json",
     "inspect:bundle": "browserify --full-paths app/js/index.js | uglifyjs -mc | Discify --open",
     "publish:demo": "npm run build && gh-pages -d dist"
   },
   "author": "@r0yhewitt",
   "license": "SAX-PD",
   "dependencies": {
-    "leaflet": "^1.0.0-beta.2"
+    "events": "^1.1.0",
+    "leaflet": "^1.0.0-beta.2",
+    "lodash.foreach": "^4.0.0",
+    "xhr": "^2.2.0"
   },
   "devDependencies": {
     "autoprefixer": "^6.2.3",
@@ -48,6 +55,7 @@
     "npm-watch": "^0.1.1",
     "postcss-cli": "^2.3.3",
     "rimraf": "^2.5.0",
+    "svgo": "^0.6.1",
     "uglifyjs": "^2.4.10",
     "watchify": "^3.7.0"
   }
