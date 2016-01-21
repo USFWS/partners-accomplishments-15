@@ -1,31 +1,29 @@
 (function () {
   'use strict';
 
-  var $ = require('jquery');
   var map = require('./map');
   var accomplishments = require('./data-access');
   var emitter = require('./mediator');
 
   var _ = {
-    debounce: require('lodash.debounce')
+    each: require('lodash.foreach')
   };
 
-  var $window = $(window),
-      $sections = $('section');
+  var pages = document.querySelectorAll('.page');
 
-  // Scroll event handler to toggle the active story
-  $window.scroll(_.debounce(function() {
-    $sections.each(function() {
-      var offset = $(this).offset();
-      console.log(offset.bottom);
-      if ( $window.scrollTop() > offset.bottom ){
-        $sections.removeClass('active');
-        $(this).next('section').addClass('active');
-      } else if ( $window.scrollTop() === 0 ) {
-        $sections.removeClass('active');
-      }
-    });
-  }, 25));
+  document.body.addEventListener('click', function (e) {
+    if (e.target.classList.contains('advance-slide')) {
+      var target = e.target.getAttribute('href').slice(1);
+      e.preventDefault();
+      emitter.emit('advance:slide', e.target);
+
+      _.each(pages, function (page) {
+        page.classList.remove('active');
+        if (page.getAttribute('data-state') === target)
+          page.classList.add('active');
+      });
+    }
+  });
 
   accomplishments.init();
 
