@@ -2,7 +2,7 @@
   'use strict';
 
   var mkdirp = require('mkdirp');
-  var directories = ['dist/css', 'dist/js', 'dist/img'];
+  var directories = ['dist/css', 'dist/js', 'dist/img', 'dist/data'];
 
   console.log('Creating dist directory');
 
