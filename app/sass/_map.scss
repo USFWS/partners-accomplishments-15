@@ -1,0 +1,27 @@
+.map-container {
+  height: 600px;
+  max-height: 100vh;
+
+  &.fixed {
+    bottom: 0;
+    height: 40vh;
+    left: 0;
+    position: fixed;
+    right: 0;
+
+    @media (min-width: 800px) {
+      border-radius: 5px;
+      bottom: 25px;
+      height: 400px;
+      left: auto;
+      overflow: hidden;
+      right: 25px;
+      width: 500px;
+    }
+  }
+}
+
+#map {
+  height: 100%;
+  width: 100%;
+}

@@ -3,6 +3,12 @@
 }
 
 footer {
+  margin-bottom: 15em;
+
+  @media (min-width: 800px) {
+    margin-bottom: 0;
+  }
+
   ul {
     list-style: none;
     text-align: center;
