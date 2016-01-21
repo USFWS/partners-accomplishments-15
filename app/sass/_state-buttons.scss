@@ -1,0 +1,32 @@
+@mixin button($color: #369) {
+  background: $color;
+  border: 3px solid darken($color, 20);
+  border-radius: 5px;
+  padding: 5px 7px;
+  margin: 5px;
+
+  &:hover {
+    background: darken($color, 10);
+  }
+
+  &:active {
+    background: lighten($color, 10);
+  }
+}
+
+.success-story-list {
+  list-style: none;
+  margin: 1em 0;
+  padding: 0;
+  text-align: center;
+
+  li {
+    @include button;
+    display: inline-block;
+
+    a {
+      color: white;
+      text-decoration: none;
+    }
+  }
+}
