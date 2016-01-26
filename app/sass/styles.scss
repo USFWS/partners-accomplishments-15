@@ -1,23 +1,30 @@
-@import url(https://fonts.googleapis.com/css?family=Roboto+Slab);
+@import 'fonts';
+@import 'variables';
+@import 'normalize';
+@import 'leaflet';
 
 html {
   box-sizing: border-box;
-  font-family: 'Roboto Slab', 'Helvetica Neue', Helvetica, Arial;
-  font-size: 1.2em;
-  max-height: 100vh;
+  font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Roboto Slab', Georgia, serif;
+}
+
+p,
+li {
+  font-size: 18px;
+  line-height: 26px;
 }
 
 *, *:before, *:after {
   box-sizing: inherit;
 }
 
-@import 'variables';
-
-@import 'normalize';
-@import 'leaflet';
-
 @import 'header';
 @import 'page';
 @import 'map';
 @import 'footer';
 @import 'state-buttons';
+@import 'images';

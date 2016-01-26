@@ -6,8 +6,10 @@
   "main": "index.js",
   "watch": {
     "minify:html": "app/index.html",
-    "shrink:img": "app/images/**/*",
-    "shrink:svg": "app/svg/*"
+    "shrink:jpg": "app/img/photos/*",
+    "shrink:png": "app/img//*",
+    "shrink:svg": "app/svg/*",
+    "copy:fonts": "app/fonts/*"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -27,12 +29,13 @@
     "shrink:graphics": "npm run shrink:jpg && npm run shrink:png && npm run shrink:svg",
     "serve": "browser-sync start --server dist --files 'dist/**/*'",
     "watch": "npm-watch",
+    "copy:fonts": "ncp app/fonts dist/fonts",
     "clean:dist": "rimraf -rf dist",
     "build:dist": "node app/js/build.js",
     "prestart": "npm run clean:dist && npm run build:dist",
-    "start": "npm run shrink:graphics & npm run minify:html & npm run watch:js & npm run watch:sass & npm run watch & npm run minify:json & npm run serve",
+    "start": "npm run copy:fonts & npm run shrink:graphics & npm run minify:html & npm run watch:js & npm run watch:sass & npm run watch & npm run minify:json & npm run serve",
     "prebuild": "npm run clean:dist && npm run build:dist",
-    "build": "npm run shrink:graphics && npm run minify:html && npm run build:js && npm run build:sass && npm run minify:json",
+    "build": "npm run copy:fonts & npm run shrink:graphics && npm run minify:html && npm run build:js && npm run build:sass && npm run minify:json",
     "inspect:bundle": "browserify --full-paths app/js/index.js | uglifyjs -mc | Discify --open",
     "publish:demo": "npm run build && gh-pages -d dist"
   },
