@@ -1,4 +1,11 @@
 img {
+  display: block;
   height: auto;
+  margin: auto;
   max-width: 100%;
+}
+
+.image-right {
+  float: right;
+  margin: 0 0 2em 2em;
 }
