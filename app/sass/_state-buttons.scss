@@ -2,6 +2,7 @@
   background: $color;
   border: 3px solid darken($color, 20);
   border-radius: 5px;
+  color: white;
   padding: 5px 7px;
   margin: 5px;
 
@@ -23,9 +24,11 @@
   li {
     @include button;
     display: inline-block;
+    padding: 0;
 
     a {
       color: white;
+      padding: 10px;
       text-decoration: none;
     }
   }
@@ -33,4 +36,12 @@
 
 .success-story-info {
   text-align:center;
+}
+
+.back-to-top {
+  @include button;
+  display: block;
+  margin: auto;
+  width: 110px;
+  text-decoration: none;
 }
