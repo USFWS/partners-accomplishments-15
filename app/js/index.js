@@ -2,7 +2,7 @@
   'use strict';
 
   var map = require('./map');
-  var accomplishments = require('./data-access');
+  var dataAccess = require('./data-access');
   var emitter = require('./mediator');
 
   var _ = {
@@ -25,8 +25,10 @@
     }
   });
 
-  accomplishments.init();
-
+  dataAccess.init();
+  emitter.on('states:loaded', function (states) {
+    map.addStates(states);
+  });
   emitter.on('accomplishments:loaded', function (data) {
     map.init({ data: data });
   });
