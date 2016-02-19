@@ -2,9 +2,9 @@
   background: $color;
   border: 3px solid darken($color, 20);
   border-radius: 5px;
-  color: white;
-  padding: 5px 7px;
+  color: $white;
   margin: 5px;
+  padding: 5px 7px;
 
   &:hover {
     background: darken($color, 10);
@@ -27,7 +27,7 @@
     padding: 0;
 
     a {
-      color: white;
+      color: $white;
       padding: 10px;
       text-decoration: none;
     }
@@ -35,13 +35,13 @@
 }
 
 .success-story-info {
-  text-align:center;
+  text-align: center;
 }
 
 .back-to-top {
   @include button;
   display: block;
   margin: auto;
-  width: 110px;
   text-decoration: none;
+  width: 110px;
 }

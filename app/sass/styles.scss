@@ -1,6 +1,5 @@
 @import 'fonts';
 @import 'variables';
-@import 'normalize';
 @import 'leaflet';
 
 html {
@@ -8,8 +7,13 @@ html {
   font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
 
-h1, h2, h3, h4, h5, h6 {
-  color: #23427a;
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: $blue;
   font-family: 'Roboto Slab', Georgia, serif;
 }
 
@@ -19,13 +23,16 @@ li {
   line-height: 26px;
 }
 
-*, *:before, *:after {
+* {
   box-sizing: inherit;
+
+  &::after,
+  &::before {
+    box-sizing: inherit;
+  }
 }
 
-@import 'header';
-@import 'page';
 @import 'map';
-@import 'footer';
+@import 'page';
 @import 'state-buttons';
 @import 'images';
